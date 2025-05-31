@@ -1,0 +1,226 @@
+# 🐰 GROW YouR NEED - CodeRabbit AI Configuration
+# Advanced AI code review settings for optimal analysis
+
+# Review Configuration
+reviews:
+  # Enable comprehensive review mode
+  level: comprehensive
+  
+  # Auto-approve simple changes
+  auto_approve:
+    enabled: true
+    conditions:
+      - "Documentation updates"
+      - "README changes"
+      - "Comment additions"
+      - "Formatting fixes"
+      - "Dependency version bumps"
+  
+  # Request changes for critical issues
+  request_changes:
+    enabled: true
+    conditions:
+      - "Security vulnerabilities"
+      - "Performance regressions"
+      - "Breaking changes"
+      - "Missing error handling"
+
+# File Patterns
+include:
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+  - "**/*.json"
+  - "**/*.md"
+  - "**/*.yml"
+  - "**/*.yaml"
+  - "**/*.css"
+  - "**/*.scss"
+  - "Dockerfile"
+  - "docker-compose.yml"
+
+exclude:
+  - "node_modules/**"
+  - ".next/**"
+  - "dist/**"
+  - "build/**"
+  - "coverage/**"
+  - "*.min.js"
+  - "*.min.css"
+  - "package-lock.json"
+  - "yarn.lock"
+  - ".git/**"
+
+# Focus Areas for AI Review
+focus_areas:
+  # Security Analysis
+  security:
+    enabled: true
+    checks:
+      - "SQL injection vulnerabilities"
+      - "XSS prevention"
+      - "Authentication flaws"
+      - "Authorization issues"
+      - "Data validation"
+      - "Sensitive data exposure"
+      - "CSRF protection"
+      - "Input sanitization"
+
+  # Performance Optimization
+  performance:
+    enabled: true
+    checks:
+      - "Bundle size optimization"
+      - "Lazy loading implementation"
+      - "Image optimization"
+      - "Database query efficiency"
+      - "Memory leaks"
+      - "Unnecessary re-renders"
+      - "Code splitting"
+      - "Caching strategies"
+
+  # Code Quality
+  code_quality:
+    enabled: true
+    checks:
+      - "Code duplication"
+      - "Complex functions"
+      - "Naming conventions"
+      - "Code organization"
+      - "Error handling"
+      - "Logging practices"
+      - "Documentation quality"
+      - "Test coverage"
+
+  # React/Next.js Best Practices
+  react_nextjs:
+    enabled: true
+    checks:
+      - "Hook usage patterns"
+      - "Component composition"
+      - "State management"
+      - "Effect dependencies"
+      - "Key props in lists"
+      - "Prop validation"
+      - "Next.js optimizations"
+      - "SSR/SSG implementation"
+
+  # TypeScript Analysis
+  typescript:
+    enabled: true
+    checks:
+      - "Type safety"
+      - "Interface design"
+      - "Generic usage"
+      - "Enum vs union types"
+      - "Strict mode compliance"
+      - "Type assertions"
+      - "Optional chaining"
+      - "Nullish coalescing"
+
+  # Accessibility
+  accessibility:
+    enabled: true
+    checks:
+      - "ARIA attributes"
+      - "Semantic HTML"
+      - "Keyboard navigation"
+      - "Screen reader support"
+      - "Color contrast"
+      - "Focus management"
+      - "Alt text for images"
+      - "Form accessibility"
+
+# Custom Review Prompts
+custom_prompts:
+  - name: "React Best Practices"
+    description: "Review React component patterns and hooks usage"
+    prompt: |
+      Please review this React code for:
+      - Proper hook usage and dependencies
+      - Component composition and reusability
+      - State management patterns
+      - Performance optimizations (memo, callback, useMemo)
+      - Prop validation and TypeScript types
+
+  - name: "Next.js Optimization"
+    description: "Check Next.js specific optimizations"
+    prompt: |
+      Please analyze this Next.js code for:
+      - Image optimization with next/image
+      - Dynamic imports and code splitting
+      - API route best practices
+      - SSR/SSG implementation
+      - Metadata and SEO optimization
+
+  - name: "Security Review"
+    description: "Comprehensive security analysis"
+    prompt: |
+      Please perform a security review focusing on:
+      - Input validation and sanitization
+      - Authentication and authorization
+      - SQL injection prevention
+      - XSS protection
+      - CSRF token usage
+      - Sensitive data handling
+
+  - name: "Performance Analysis"
+    description: "Performance optimization review"
+    prompt: |
+      Please analyze for performance issues:
+      - Bundle size impact
+      - Lazy loading opportunities
+      - Database query optimization
+      - Caching strategies
+      - Memory leak prevention
+      - Render optimization
+
+# Language-Specific Settings
+languages:
+  typescript:
+    strict_mode: true
+    prefer_interfaces: true
+    check_exhaustiveness: true
+    
+  javascript:
+    prefer_const: true
+    no_var: true
+    prefer_arrow_functions: true
+    
+  css:
+    check_unused_styles: true
+    prefer_custom_properties: true
+    
+  markdown:
+    check_links: true
+    spell_check: true
+
+# Integration Settings
+integrations:
+  github:
+    auto_merge: false
+    dismiss_stale_reviews: true
+    require_review_from_codeowners: true
+    
+  slack:
+    enabled: false
+    webhook_url: ""
+    
+  teams:
+    enabled: false
+    webhook_url: ""
+
+# Notification Settings
+notifications:
+  email: false
+  in_app: true
+  github_comments: true
+  
+# Advanced Settings
+advanced:
+  max_files_per_review: 50
+  max_lines_per_file: 1000
+  timeout_minutes: 10
+  parallel_reviews: true
+  cache_results: true

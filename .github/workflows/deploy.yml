@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    types: [opened, synchronize, reopened]
 
 env:
   NODE_VERSION: '20'
@@ -12,6 +13,22 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
+  # 🐰 AI Code Review (PR only)
+  ai-review:
+    name: 🤖 CodeRabbit AI Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐰 CodeRabbit AI Review
+        uses: coderabbitai/coderabbit-action@latest
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   # 🔍 Code Quality & Security Checks
   quality-checks:
     name: 🛡️ Quality & Security Analysis

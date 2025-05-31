@@ -1,0 +1,63 @@
+name: 🐰 CodeRabbit AI Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  review:
+    name: 🤖 AI Code Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐰 CodeRabbit AI Review
+        uses: coderabbitai/coderabbit-action@latest
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: Configure review settings
+          review-level: 'comprehensive'
+          include-patterns: |
+            **/*.ts
+            **/*.tsx
+            **/*.js
+            **/*.jsx
+            **/*.json
+            **/*.md
+            **/*.yml
+            **/*.yaml
+          exclude-patterns: |
+            node_modules/**
+            .next/**
+            dist/**
+            build/**
+            coverage/**
+            *.min.js
+            *.min.css
+          # Focus areas for AI review
+          focus-areas: |
+            security
+            performance
+            best-practices
+            code-quality
+            accessibility
+            type-safety
+          # Custom review prompts
+          custom-prompts: |
+            - Check for React best practices and hooks usage
+            - Verify TypeScript type safety and proper typing
+            - Review Next.js specific optimizations
+            - Analyze authentication and security implementations
+            - Check for performance optimizations and lazy loading
+            - Verify accessibility compliance (WCAG guidelines)
+            - Review database queries and ORM usage
+            - Check for proper error handling and logging
