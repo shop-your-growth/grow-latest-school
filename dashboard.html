@@ -1,0 +1,857 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Dashboard UI</title>
+    <script type="module" crossorigin src="/components/279150926676250624/revision/279180320480317440/assets/index-DJsm4AaZ.js"></script>
+    <link rel="stylesheet" crossorigin href="/components/279150926676250624/revision/279180320480317440/assets/index-DbRQV75a.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  <script>// Element hover tracker script
+(function () {
+  console.log('Element tracker script loaded');
+  if (window.__elementHoverTrackerInstalled) return;
+  window.__elementHoverTrackerInstalled = true;
+
+  // Add a transparent overlay to capture mouse movements without interfering
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.pointerEvents = 'none'; // Default to none (edit mode off)
+  overlay.style.zIndex = '2147483647'; // Maximum z-index
+  overlay.setAttribute('data-element-editor', 'true');
+  document.body.appendChild(overlay);
+  console.log(
+    'Overlay created with dimensions:',
+    `width: ${overlay.offsetWidth}, height: ${overlay.offsetHeight}`
+  );
+
+  // Track edit mode state
+  window.__editModeActive = false;
+
+  // Function to toggle edit mode
+  function toggleEditMode(isActive) {
+    window.__editModeActive = isActive;
+    overlay.style.pointerEvents = isActive ? 'auto' : 'none';
+  }
+
+  function getElementByMagicpathId(id) {
+    return document.querySelector('[data-magicpath-id="' + id + '"]');
+  }
+
+  function getElementPath(element) {
+    if (!element) return '';
+    if (element === document.body) return 'body';
+
+    let path = element.tagName.toLowerCase();
+    const magicpathId = element.getAttribute('data-magicpath-id');
+    if (magicpathId) path += '[data-magicpath-id="' + magicpathId + '"]';
+    const magicpathPath = element.getAttribute('data-magicpath-path');
+    if (magicpathPath) path += '[data-magicpath-path="' + magicpathPath + '"]';
+    else if (element.className && typeof element.className === 'string') {
+      const classes = element.className.split(' ').filter(c => c);
+      if (classes.length) path += '.' + classes.join('.');
+    }
+
+    // Add index among siblings
+    const siblings = Array.from(element.parentNode.children);
+    const index = siblings.indexOf(element);
+    path += ':nth-child(' + (index + 1) + ')';
+
+    return getElementPath(element.parentNode) + ' > ' + path;
+  }
+
+  function getBasicStyles(element) {
+    const computedStyle = window.getComputedStyle(element);
+
+    // Extract the gradient part if background contains a gradient
+    let background = computedStyle.background;
+    if (background.includes('gradient')) {
+      try {
+        // Find the gradient type (linear, radial, conic)
+        let gradientType = null;
+        if (background.includes('linear-gradient')) gradientType = 'linear-gradient';
+        else if (background.includes('radial-gradient')) gradientType = 'radial-gradient';
+        else if (background.includes('conic-gradient')) gradientType = 'conic-gradient';
+
+        if (gradientType) {
+          // Find the start of the gradient
+          let start = background.indexOf(gradientType);
+
+          // Now track parentheses to find the complete gradient function
+          let depth = 0;
+          let end = background.length;
+          let foundOpening = false;
+
+          for (let i = start; i < background.length; i++) {
+            if (background[i] === '(') {
+              depth++;
+              foundOpening = true;
+            } else if (background[i] === ')') {
+              depth--;
+              if (depth === 0 && foundOpening) {
+                end = i + 1;
+                break;
+              }
+            }
+          }
+
+          if (end > start) {
+            background = background.substring(start, end);
+          }
+        }
+      } catch (error) {
+        // Silently handle errors
+      }
+    }
+
+    return {
+      // Colors
+      background: background,
+      backgroundColor: computedStyle.backgroundColor,
+      color: computedStyle.color,
+      borderColor: computedStyle.borderColor,
+
+      // Border properties
+      border: computedStyle.border,
+      borderTop: computedStyle.borderTop,
+      borderRight: computedStyle.borderRight,
+      borderBottom: computedStyle.borderBottom,
+      borderLeft: computedStyle.borderLeft,
+      borderStyle: computedStyle.borderStyle,
+      borderWidth: computedStyle.borderWidth,
+      borderTopColor: computedStyle.borderTopColor,
+      borderRightColor: computedStyle.borderRightColor,
+      borderBottomColor: computedStyle.borderBottomColor,
+      borderLeftColor: computedStyle.borderLeftColor,
+
+      // Border radius properties
+      borderRadius: computedStyle.borderRadius,
+      borderTopLeftRadius: computedStyle.borderTopLeftRadius,
+      borderTopRightRadius: computedStyle.borderTopRightRadius,
+      borderBottomLeftRadius: computedStyle.borderBottomLeftRadius,
+      borderBottomRightRadius: computedStyle.borderBottomRightRadius,
+
+      // Shadow properties
+      boxShadow: computedStyle.boxShadow,
+      textShadow: computedStyle.textShadow,
+
+      // Dimensions
+      width: computedStyle.width,
+      height: computedStyle.height,
+
+      // Padding - individual directions
+      paddingTop: computedStyle.paddingTop,
+      paddingRight: computedStyle.paddingRight,
+      paddingBottom: computedStyle.paddingBottom,
+      paddingLeft: computedStyle.paddingLeft,
+
+      // Margin - individual directions
+      marginTop: computedStyle.marginTop,
+      marginRight: computedStyle.marginRight,
+      marginBottom: computedStyle.marginBottom,
+      marginLeft: computedStyle.marginLeft,
+
+      // Border - individual directions
+      borderTopWidth: computedStyle.borderTopWidth,
+      borderRightWidth: computedStyle.borderRightWidth,
+      borderBottomWidth: computedStyle.borderBottomWidth,
+      borderLeftWidth: computedStyle.borderLeftWidth,
+
+      // Positioning
+      position: computedStyle.position,
+      display: computedStyle.display,
+      visibility: computedStyle.visibility,
+      opacity: computedStyle.opacity,
+
+      // Layout
+      flexDirection: computedStyle.flexDirection,
+      justifyContent: computedStyle.justifyContent,
+      alignItems: computedStyle.alignItems,
+
+      // Text
+      fontSize: computedStyle.fontSize,
+      fontWeight: computedStyle.fontWeight,
+      textAlign: computedStyle.textAlign,
+      fontFamily: computedStyle.fontFamily,
+
+      // Box model
+      boxSizing: computedStyle.boxSizing,
+      overflow: computedStyle.overflow,
+
+      // Transform
+      transform: computedStyle.transform,
+
+      // Z-index
+      zIndex: computedStyle.zIndex,
+    };
+  }
+
+  function hasDirectTextNodes(element) {
+    // Check if this element directly contains text nodes (not just child elements with text)
+    for (let node of element.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function handleElementHover(e) {
+    // Only process if edit mode is active
+    if (!window.__editModeActive) return;
+
+    // Find the element under the cursor (ignoring our overlay)
+    overlay.style.pointerEvents = 'none';
+    const element = document.elementFromPoint(e.clientX, e.clientY);
+    overlay.style.pointerEvents = window.__editModeActive ? 'auto' : 'none';
+
+    if (!element) return;
+
+    // Skip our injected elements
+    if (element === overlay || element.closest('[data-element-editor]')) return;
+
+    // Store current hovered element for scroll updates
+    currentHoveredElement = element;
+
+    const rect = element.getBoundingClientRect();
+
+    window.parent.postMessage(
+      {
+        type: 'ELEMENT_HOVER',
+        element: {
+          tagName: element.tagName,
+          magicpathId: element.getAttribute('data-magicpath-id') || '',
+          magicpathPath: element.getAttribute('data-magicpath-path') || '',
+          rect: {
+            top: rect.top,
+            left: rect.left,
+            width: rect.width,
+            height: rect.height,
+          },
+          path: getElementPath(element),
+        },
+      },
+      '*'
+    );
+  }
+
+  function handleMouseOut() {
+    if (!window.__editModeActive) return;
+
+    // Clear current hovered element
+    currentHoveredElement = null;
+
+    window.parent.postMessage(
+      {
+        type: 'ELEMENT_HOVER_END',
+      },
+      '*'
+    );
+  }
+
+  function handleClick(e) {
+    // Only process if edit mode is active
+    if (!window.__editModeActive) return;
+
+    // When in edit mode, we want to select elements rather than follow links or trigger handlers
+    overlay.style.pointerEvents = 'none';
+    const element = document.elementFromPoint(e.clientX, e.clientY);
+    overlay.style.pointerEvents = window.__editModeActive ? 'auto' : 'none';
+
+    if (!element) return;
+    if (element === overlay || element.closest('[data-element-editor]')) return;
+
+    // Store the currently selected element for scroll updates
+    currentSelectedElement = element;
+
+    // Get the element's computed styles
+    const styles = getBasicStyles(element);
+
+    // Get image source if element is an image
+    let imageSrc = undefined;
+    if (element.tagName === 'IMG') {
+      imageSrc = element.src;
+    } else if (element.tagName === 'SVG') {
+      // For SVG elements, set the source to the outerHTML or a serialized version
+      imageSrc = element.outerHTML;
+    }
+
+    // Send selection message to parent
+    window.parent.postMessage(
+      {
+        type: 'ELEMENT_SELECT',
+        element: {
+          tagName: element.tagName,
+          magicpathId: element.getAttribute('data-magicpath-id') || '',
+          magicpathPath: element.getAttribute('data-magicpath-path') || '',
+          rect: {
+            top: element.getBoundingClientRect().top,
+            left: element.getBoundingClientRect().left,
+            width: element.getBoundingClientRect().width,
+            height: element.getBoundingClientRect().height,
+          },
+          path: getElementPath(element),
+          innerText: element.innerText,
+          innerHTML: element.innerHTML,
+          outerHTML: element.outerHTML,
+          attributes: Array.from(element.attributes).map(attr => ({
+            name: attr.name,
+            value: attr.value,
+          })),
+          styles: styles,
+          image: imageSrc,
+          text: element.innerText,
+          placeholder: element.getAttribute('placeholder') || '',
+          hasOwnText: hasDirectTextNodes(element),
+        },
+      },
+      '*'
+    );
+    // Prevent default click behavior in edit mode
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  // Handle zoom (pinch) gesture
+  function handleZoom(e) {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+
+      const delta = e.deltaY || e.detail || e.wheelDelta;
+      const position = {
+        x: e.clientX,
+        y: e.clientY,
+      };
+
+      window.parent.postMessage(
+        {
+          type: 'IFRAME_ZOOM',
+          zoom: {
+            scale: delta,
+            position: position,
+          },
+        },
+        '*'
+      );
+
+      return false;
+    }
+  }
+
+  // Handle scroll forwarding when iframe content doesn't scroll
+  function handleScrollForwarding(e) {
+    // Skip if this is a zoom gesture
+    if (e.ctrlKey || e.metaKey) return;
+
+    // Get current scroll position and limits
+    const scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const maxScrollLeft =
+      document.documentElement.scrollWidth - document.documentElement.clientWidth;
+    const maxScrollTop =
+      document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    // Check if scrolling would actually happen in either direction
+    let willScrollX = false;
+    let willScrollY = false;
+
+    // For horizontal scrolling
+    if (e.deltaX !== 0) {
+      if (maxScrollLeft > 0) {
+        if (e.deltaX > 0 && scrollLeft < maxScrollLeft) {
+          willScrollX = true; // Can scroll right
+        } else if (e.deltaX < 0 && scrollLeft > 0) {
+          willScrollX = true; // Can scroll left
+        }
+      }
+    }
+
+    // For vertical scrolling
+    if (e.deltaY !== 0) {
+      if (maxScrollTop > 0) {
+        if (e.deltaY > 0 && scrollTop < maxScrollTop) {
+          willScrollY = true; // Can scroll down
+        } else if (e.deltaY < 0 && scrollTop > 0) {
+          willScrollY = true; // Can scroll up
+        }
+      }
+    }
+
+    // Only forward to canvas if no scrolling will happen
+    if (!willScrollX && !willScrollY && (e.deltaX !== 0 || e.deltaY !== 0)) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      window.parent.postMessage(
+        {
+          type: 'IFRAME_SCROLL_FORWARD',
+          scroll: {
+            deltaX: e.deltaX,
+            deltaY: e.deltaY,
+            clientX: e.clientX,
+            clientY: e.clientY,
+          },
+        },
+        '*'
+      );
+
+      return false;
+    }
+  }
+
+  // Track currently hovered element
+  let currentHoveredElement = null;
+  let currentSelectedElement = null;
+
+  // Function to send updated rect for hovered element on scroll
+  function handleScroll() {
+    if (!window.__editModeActive) return;
+
+    // Update hovered element position if exists
+    if (currentHoveredElement) {
+      const rect = currentHoveredElement.getBoundingClientRect();
+      window.parent.postMessage(
+        {
+          type: 'ELEMENT_HOVER',
+          element: {
+            tagName: currentHoveredElement.tagName,
+            magicpathId: currentHoveredElement.getAttribute('data-magicpath-id') || '',
+            magicpathPath: currentHoveredElement.getAttribute('data-magicpath-path') || '',
+            rect: {
+              top: rect.top,
+              left: rect.left,
+              width: rect.width,
+              height: rect.height,
+            },
+            path: getElementPath(currentHoveredElement),
+          },
+        },
+        '*'
+      );
+    }
+
+    // Update selected element position if exists
+    if (currentSelectedElement) {
+      const rect = currentSelectedElement.getBoundingClientRect();
+      // Send selection message to parent with updated rect
+      window.parent.postMessage(
+        {
+          type: 'ELEMENT_SELECT',
+          element: {
+            tagName: currentSelectedElement.tagName,
+            magicpathId: currentSelectedElement.getAttribute('data-magicpath-id') || '',
+            magicpathPath: currentSelectedElement.getAttribute('data-magicpath-path') || '',
+            rect: {
+              top: rect.top,
+              left: rect.left,
+              width: rect.width,
+              height: rect.height,
+            },
+            path: getElementPath(currentSelectedElement),
+          },
+        },
+        '*'
+      );
+    }
+  }
+
+  // Add event listeners
+  document.addEventListener('wheel', handleZoom, { passive: false });
+  document.addEventListener('wheel', handleScrollForwarding, { passive: false });
+  document.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll);
+  overlay.addEventListener('mousemove', handleElementHover);
+  overlay.addEventListener('mouseout', handleMouseOut);
+  overlay.addEventListener('click', handleClick);
+
+  // Handle style updates and edit mode toggle from parent
+  window.addEventListener('message', function (e) {
+    if (!e.data || typeof e.data.type !== 'string') return;
+
+    const magicpathId = e.data.magicpathId || '';
+    const magicpathPath = e.data.magicpathPath || '';
+
+    const getElements = () => {
+      // Get all elements matching both data-magicpath-id and data-magicpath-path
+      return document.querySelectorAll(
+        '[data-magicpath-id="' + magicpathId + '"][data-magicpath-path="' + magicpathPath + '"]'
+      );
+    };
+
+    // Handle toggle edit mode message - clear selected element when deactivated
+    if (e.data.type === 'TOGGLE_EDIT_MODE') {
+      if (!e.data.active) {
+        currentHoveredElement = null;
+        currentSelectedElement = null;
+      }
+    }
+
+    if (e.data.type === 'UPDATE_STYLES') {
+      const elements = getElements();
+      if (!elements || elements.length === 0) {
+        // Send error response if no elements found
+        window.parent.postMessage(
+          {
+            type: 'STYLES_UPDATED',
+            requestId: e.data.requestId,
+            error: 'Elements not found',
+          },
+          '*'
+        );
+        return;
+      }
+
+      try {
+        // Update Google Fonts if fontFamily or fontWeight is specified
+        if (e.data.styles && (e.data.styles.fontFamily || e.data.styles.fontWeight)) {
+          // Get the current font family from the element if not provided in the update
+          let currentFontFamily = e.data.styles.fontFamily;
+
+          if (!currentFontFamily && e.data.styles.fontWeight) {
+            // If only fontWeight is being updated, get the current fontFamily from the element
+            const elements = getElements();
+            if (elements.length > 0) {
+              const computedStyle = window.getComputedStyle(elements[0]);
+              currentFontFamily = computedStyle.fontFamily;
+            }
+          }
+
+          if (currentFontFamily) {
+            console.log(
+              'Updating Google Fonts',
+              currentFontFamily,
+              'weight:',
+              e.data.styles.fontWeight
+            );
+            const fontWeight = e.data.styles.fontWeight || '400';
+            updateGoogleFonts(currentFontFamily, fontWeight);
+          }
+        }
+
+        // Apply each style property to all matching elements
+        elements.forEach(element => {
+          Object.entries(e.data.styles).forEach(([property, value]) => {
+            element.style[property] = value;
+          });
+        });
+
+        // Get the updated rectangle information for the first element
+        const firstElement = elements[0];
+        const updatedRect = firstElement.getBoundingClientRect();
+
+        // Notify parent of successful style update with updated rectangle
+        window.parent.postMessage(
+          {
+            type: 'STYLES_UPDATED',
+            requestId: e.data.requestId,
+            magicpathId: e.data.magicpathId,
+            magicpathPath: e.data.magicpathPath,
+            count: elements.length,
+            styles: e.data.styles,
+            rect: {
+              top: updatedRect.top + window.scrollY,
+              left: updatedRect.left + window.scrollX,
+              width: updatedRect.width,
+              height: updatedRect.height,
+            },
+          },
+          '*'
+        );
+      } catch (error) {
+        // Send error response if style application fails
+        window.parent.postMessage(
+          {
+            type: 'STYLES_UPDATED',
+            requestId: e.data.requestId,
+            error: error.message,
+          },
+          '*'
+        );
+      }
+    } else if (e.data.type === 'TOGGLE_EDIT_MODE') {
+      // Toggle edit mode based on message from parent
+      toggleEditMode(!!e.data.active);
+    } else if (e.data.type === 'UPDATE_IMAGE_SRC') {
+      // Get all elements with the same ID
+      const elements = getElements();
+      if (!elements || elements.length === 0) {
+        // Send error response if no elements found
+        window.parent.postMessage(
+          {
+            type: 'IMAGE_SRC_UPDATED',
+            requestId: e.data.requestId,
+            error: 'Elements not found',
+          },
+          '*'
+        );
+        return;
+      }
+
+      try {
+        // Update src for all matching img or svg elements
+        elements.forEach(element => {
+          const tagName = element.tagName.toLowerCase();
+
+          if (tagName === 'img') {
+            // Store original src if not already stored
+            if (!element.hasAttribute('data-original-src')) {
+              element.setAttribute('data-original-src', element.src);
+            }
+
+            // If new src is undefined, restore original
+            element.src =
+              e.data.image === undefined ? element.getAttribute('data-original-src') : e.data.image;
+          } else if (tagName === 'svg') {
+            // Store original SVG markup if not already stored
+            if (!element.hasAttribute('data-original-svg')) {
+              element.setAttribute('data-original-svg', element.outerHTML);
+            }
+
+            if (e.data.image === undefined) {
+              // Restore original SVG
+              const originalSVG = element.getAttribute('data-original-svg');
+              if (originalSVG) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = originalSVG;
+                const newSVG = tempDiv.firstElementChild;
+                if (newSVG) {
+                  element.parentNode.replaceChild(newSVG, element);
+                }
+              }
+            } else if (e.data.image.startsWith('<svg')) {
+              // Replace SVG with new SVG content
+              const tempDiv = document.createElement('div');
+              tempDiv.innerHTML = e.data.image;
+              const newSVG = tempDiv.firstElementChild;
+              if (newSVG) {
+                // Copy over the data attributes
+                newSVG.setAttribute('data-magicpath-id', magicpathId);
+                newSVG.setAttribute('data-magicpath-path', magicpathPath);
+                if (element.hasAttribute('data-original-svg')) {
+                  newSVG.setAttribute(
+                    'data-original-svg',
+                    element.getAttribute('data-original-svg')
+                  );
+                }
+                element.parentNode.replaceChild(newSVG, element);
+              }
+            } else if (e.data.image.startsWith('http')) {
+              // Replace SVG with image referencing the URL
+              const img = document.createElement('img');
+              img.src = e.data.image;
+              img.setAttribute('data-magicpath-id', magicpathId);
+              img.setAttribute('data-magicpath-path', magicpathPath);
+              img.setAttribute('data-original-element', 'svg');
+              img.setAttribute('data-original-svg', element.outerHTML);
+
+              // Copy styles from SVG to image
+              const svgStyles = window.getComputedStyle(element);
+              img.style.width = svgStyles.width;
+              img.style.height = svgStyles.height;
+
+              element.parentNode.replaceChild(img, element);
+            }
+          }
+        });
+
+        // Get the updated rectangle information for the first element (which might have been replaced)
+        const updatedElements = getElements();
+        let updatedRect = null;
+
+        if (updatedElements.length > 0) {
+          const firstElement = updatedElements[0];
+          updatedRect = firstElement.getBoundingClientRect();
+        }
+
+        // Notify parent of successful update
+        window.parent.postMessage(
+          {
+            type: 'IMAGE_SRC_UPDATED',
+            requestId: e.data.requestId,
+            magicpathId: e.data.magicpathId,
+            magicpathPath: e.data.magicpathPath,
+            count: updatedElements.length,
+            image: e.data.image,
+            text: e.data.text,
+            rect: updatedRect
+              ? {
+                  top: updatedRect.top + window.scrollY,
+                  left: updatedRect.left + window.scrollX,
+                  width: updatedRect.width,
+                  height: updatedRect.height,
+                }
+              : null,
+          },
+          '*'
+        );
+      } catch (error) {
+        // Send error response if update fails
+        window.parent.postMessage(
+          {
+            type: 'IMAGE_SRC_UPDATED',
+            requestId: e.data.requestId,
+            error: error.message,
+          },
+          '*'
+        );
+      }
+    } else if (e.data.type === 'UPDATE_TEXT') {
+      // Get all elements with the same ID
+      const elements = getElements();
+      if (!elements || elements.length === 0) {
+        // Send error response if no elements found
+        window.parent.postMessage(
+          {
+            type: 'TEXT_UPDATED',
+            requestId: e.data.requestId,
+            error: 'Elements not found',
+          },
+          '*'
+        );
+        return;
+      }
+
+      try {
+        // Update text for all matching elements
+        elements.forEach(element => {
+          // Store original text if not already stored
+          if (!element.hasAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.innerText);
+          }
+
+          // If new text is undefined, restore original
+          element.innerText =
+            e.data.text === undefined ? element.getAttribute('data-original-text') : e.data.text;
+        });
+
+        // Get the updated rectangle information for the first element
+        const firstElement = elements[0];
+        const updatedRect = firstElement.getBoundingClientRect();
+
+        // Notify parent of successful update
+        window.parent.postMessage(
+          {
+            type: 'TEXT_UPDATED',
+            requestId: e.data.requestId,
+            magicpathId: e.data.magicpathId,
+            magicpathPath: e.data.magicpathPath,
+            count: elements.length,
+            image: e.data.image,
+            text: e.data.text,
+            rect: {
+              top: updatedRect.top + window.scrollY,
+              left: updatedRect.left + window.scrollX,
+              width: updatedRect.width,
+              height: updatedRect.height,
+            },
+          },
+          '*'
+        );
+      } catch (error) {
+        // Send error response if update fails
+        window.parent.postMessage(
+          {
+            type: 'TEXT_UPDATED',
+            requestId: e.data.requestId,
+            error: error.message,
+          },
+          '*'
+        );
+      }
+    } else if (e.data.type === 'UPDATE_PLACEHOLDER') {
+      const { magicpathId, magicpathPath, requestId, placeholder } = e.data;
+      const element = getElementByMagicpathId(magicpathId);
+
+      if (element) {
+        // Update the placeholder attribute
+        element.setAttribute('placeholder', placeholder || '');
+
+        // Get the updated rectangle
+        const updatedRect = element.getBoundingClientRect();
+
+        // Notify the parent window about the update
+        window.parent.postMessage(
+          {
+            type: 'PLACEHOLDER_UPDATED',
+            requestId,
+            magicpathId,
+            magicpathPath,
+            placeholder,
+            rect: {
+              top: updatedRect.top + window.scrollY,
+              left: updatedRect.left + window.scrollX,
+              width: updatedRect.width,
+              height: updatedRect.height,
+            },
+          },
+          '*'
+        );
+      }
+    }
+  });
+
+  // Let the parent know the script was successfully loaded
+  window.parent.postMessage({ type: 'EDITOR_SCRIPT_LOADED' }, '*');
+
+  function updateGoogleFonts(fontFamily, fontWeight) {
+    // Find the existing Google Fonts link tag
+    let linkTag = document.querySelector('link[href*="fonts.googleapis.com"]');
+
+    if (!linkTag) {
+      // If no link tag exists, create a new one
+      linkTag = document.createElement('link');
+      linkTag.rel = 'stylesheet';
+      document.head.appendChild(linkTag);
+    }
+
+    // Clean the font family name
+    const cleanFontFamily = fontFamily.trim().replace(/^['"]|['"]$/g, '');
+
+    // Skip system fonts and special values
+    const systemFonts = [
+      'inherit',
+      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      'Helvetica, Arial, sans-serif',
+    ];
+
+    if (systemFonts.includes(fontFamily) || systemFonts.includes(cleanFontFamily)) {
+      return; // Don't load system fonts from Google Fonts
+    }
+
+    // Initialize or get the font registry from a global variable
+    if (!window.__googleFontsRegistry) {
+      window.__googleFontsRegistry = new Map();
+    }
+
+    const registry = window.__googleFontsRegistry;
+
+    // Add the font and weight to the registry
+    if (!registry.has(cleanFontFamily)) {
+      registry.set(cleanFontFamily, new Set());
+    }
+    registry.get(cleanFontFamily).add(fontWeight || '400');
+
+    // Build the Google Fonts URL with all registered fonts and their weights
+    const fontParams = [];
+
+    for (const [family, weights] of registry.entries()) {
+      const weightsArray = Array.from(weights).sort((a, b) => parseInt(a) - parseInt(b));
+      const familyParam = `family=${encodeURIComponent(family)}:wght@${weightsArray.join(';')}`;
+      fontParams.push(familyParam);
+    }
+
+    // Construct the final URL
+    linkTag.href = `https://fonts.googleapis.com/css2?${fontParams.join('&')}&display=swap`;
+
+    console.log(`Updated Google Fonts link: ${linkTag.href}`);
+  }
+})();
+</script></body>
+</html>

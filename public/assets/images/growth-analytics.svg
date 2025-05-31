@@ -1,0 +1,68 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f5f0e9"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="400" height="50" fill="#e8dcc6"/>
+  <text x="20" y="30" fill="#3c507d" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Student Growth Analytics</text>
+  
+  <!-- Main Growth Chart -->
+  <rect x="20" y="70" width="200" height="120" fill="#ffffff" rx="8" stroke="#e0b58f" stroke-width="2"/>
+  <text x="30" y="90" fill="#3c507d" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Learning Progress</text>
+  
+  <!-- Growth Line Chart -->
+  <polyline points="30,170 50,160 70,150 90,140 110,125 130,115 150,105 170,95 190,85 210,75" 
+            stroke="#E0B58F" stroke-width="3" fill="none"/>
+  <circle cx="30" cy="170" r="3" fill="#E0B58F"/>
+  <circle cx="50" cy="160" r="3" fill="#E0B58F"/>
+  <circle cx="70" cy="150" r="3" fill="#E0B58F"/>
+  <circle cx="90" cy="140" r="3" fill="#E0B58F"/>
+  <circle cx="110" cy="125" r="3" fill="#E0B58F"/>
+  <circle cx="130" cy="115" r="3" fill="#E0B58F"/>
+  <circle cx="150" cy="105" r="3" fill="#E0B58F"/>
+  <circle cx="170" cy="95" r="3" fill="#E0B58F"/>
+  <circle cx="190" cy="85" r="3" fill="#E0B58F"/>
+  <circle cx="210" cy="75" r="3" fill="#E0B58F"/>
+  
+  <!-- Growth Area Fill -->
+  <polygon points="30,170 50,160 70,150 90,140 110,125 130,115 150,105 170,95 190,85 210,75 210,180 30,180" 
+           fill="#E0B58F" opacity="0.2"/>
+  
+  <!-- Performance Metrics -->
+  <rect x="240" y="70" width="140" height="60" fill="#ffffff" rx="8" stroke="#e0b58f" stroke-width="2"/>
+  <text x="250" y="90" fill="#3c507d" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Performance</text>
+  <text x="250" y="105" fill="#3c507d" font-family="Arial, sans-serif" font-size="10">Average Score:</text>
+  <text x="250" y="120" fill="#E0B58F" font-family="Arial, sans-serif" font-size="20" font-weight="bold">87.5%</text>
+  
+  <!-- Improvement Rate -->
+  <rect x="240" y="140" width="140" height="50" fill="#ffffff" rx="8" stroke="#e0b58f" stroke-width="2"/>
+  <text x="250" y="160" fill="#3c507d" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Growth Rate</text>
+  <text x="250" y="180" fill="#E0B58F" font-family="Arial, sans-serif" font-size="18" font-weight="bold">+15.3%</text>
+  
+  <!-- Subject Performance Bars -->
+  <rect x="20" y="210" width="360" height="70" fill="#ffffff" rx="8" stroke="#e0b58f" stroke-width="2"/>
+  <text x="30" y="230" fill="#3c507d" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Subject Performance</text>
+  
+  <text x="30" y="250" fill="#3c507d" font-family="Arial, sans-serif" font-size="10">Math</text>
+  <rect x="70" y="245" width="100" height="8" fill="#e8dcc6" rx="4"/>
+  <rect x="70" y="245" width="85" height="8" fill="#E0B58F" rx="4"/>
+  <text x="180" y="252" fill="#3c507d" font-family="Arial, sans-serif" font-size="9">85%</text>
+  
+  <text x="220" y="250" fill="#3c507d" font-family="Arial, sans-serif" font-size="10">Science</text>
+  <rect x="270" y="245" width="100" height="8" fill="#e8dcc6" rx="4"/>
+  <rect x="270" y="245" width="90" height="8" fill="#E0B58F" rx="4"/>
+  <text x="380" y="252" fill="#3c507d" font-family="Arial, sans-serif" font-size="9">90%</text>
+  
+  <text x="30" y="270" fill="#3c507d" font-family="Arial, sans-serif" font-size="10">English</text>
+  <rect x="70" y="265" width="100" height="8" fill="#e8dcc6" rx="4"/>
+  <rect x="70" y="265" width="80" height="8" fill="#E0B58F" rx="4"/>
+  <text x="180" y="272" fill="#3c507d" font-family="Arial, sans-serif" font-size="9">80%</text>
+  
+  <text x="220" y="270" fill="#3c507d" font-family="Arial, sans-serif" font-size="10">History</text>
+  <rect x="270" y="265" width="100" height="8" fill="#e8dcc6" rx="4"/>
+  <rect x="270" y="265" width="95" height="8" fill="#E0B58F" rx="4"/>
+  <text x="380" y="272" fill="#3c507d" font-family="Arial, sans-serif" font-size="9">95%</text>
+  
+  <!-- Growth Arrow Icon -->
+  <polygon points="360,20 370,30 365,30 365,40 355,40 355,30 350,30" fill="#E0B58F"/>
+</svg>

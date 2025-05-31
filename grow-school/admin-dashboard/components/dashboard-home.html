@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Home</title>
+    <link rel="stylesheet" href="../styles/dashboard-home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                <i class="fas fa-tachometer-alt"></i>
+                Admin Dashboard Overview
+            </h1>
+            <div class="last-updated">
+                Last updated: <span id="last-update-time">2025-05-30 17:54:23</span>
+                <button class="refresh-data-btn" onclick="refreshData()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- KPI Cards Section -->
+        <div class="kpi-section">
+            <div class="kpi-grid">
+                <!-- Revenue KPI -->
+                <div class="kpi-card revenue">
+                    <div class="kpi-header">
+                        <h3>Monthly Revenue</h3>
+                        <i class="fas fa-dollar-sign kpi-icon"></i>
+                    </div>
+                    <div class="kpi-value">$847,250</div>
+                    <div class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +12.5% from last month
+                    </div>
+                    <div class="kpi-chart">
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Active Clients KPI -->
+                <div class="kpi-card clients">
+                    <div class="kpi-header">
+                        <h3>Active Clients</h3>
+                        <i class="fas fa-school kpi-icon"></i>
+                    </div>
+                    <div class="kpi-value">235</div>
+                    <div class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +8 new this month
+                    </div>
+                    <div class="kpi-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Trial:</span>
+                            <span class="detail-value">12</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Active:</span>
+                            <span class="detail-value">218</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Renewal Due:</span>
+                            <span class="detail-value warning">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Health KPI -->
+                <div class="kpi-card system-health">
+                    <div class="kpi-header">
+                        <h3>System Health</h3>
+                        <i class="fas fa-heartbeat kpi-icon"></i>
+                    </div>
+                    <div class="kpi-value good">99.9%</div>
+                    <div class="kpi-change neutral">
+                        <i class="fas fa-minus"></i>
+                        Uptime this month
+                    </div>
+                    <div class="health-indicators">
+                        <div class="health-item">
+                            <span class="health-label">API Response:</span>
+                            <span class="health-status good">
+                                <i class="fas fa-circle"></i> 145ms
+                            </span>
+                        </div>
+                        <div class="health-item">
+                            <span class="health-label">Database:</span>
+                            <span class="health-status good">
+                                <i class="fas fa-circle"></i> Healthy
+                            </span>
+                        </div>
+                        <div class="health-item">
+                            <span class="health-label">Storage:</span>
+                            <span class="health-status warning">
+                                <i class="fas fa-circle"></i> 78% Used
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Users KPI -->
+                <div class="kpi-card active-users">
+                    <div class="kpi-header">
+                        <h3>Active Users</h3>
+                        <i class="fas fa-users kpi-icon"></i>
+                    </div>
+                    <div class="kpi-value">2,847</div>
+                    <div class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +156 from yesterday
+                    </div>
+                    <div class="user-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Students:</span>
+                            <span class="breakdown-value">2,234</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Teachers:</span>
+                            <span class="breakdown-value">487</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Admins:</span>
+                            <span class="breakdown-value">126</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts and Analytics Section -->
+        <div class="analytics-section">
+            <div class="analytics-grid">
+                <!-- Revenue Trend Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Revenue Trend (Last 12 Months)</h3>
+                        <div class="chart-controls">
+                            <select id="revenue-period">
+                                <option value="12m">12 Months</option>
+                                <option value="6m">6 Months</option>
+                                <option value="3m">3 Months</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-content">
+                        <canvas id="revenue-trend-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Client Growth Chart -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Client Growth & Churn</h3>
+                        <div class="chart-legend">
+                            <span class="legend-item new">
+                                <i class="fas fa-circle"></i> New Clients
+                            </span>
+                            <span class="legend-item churned">
+                                <i class="fas fa-circle"></i> Churned
+                            </span>
+                        </div>
+                    </div>
+                    <div class="chart-content">
+                        <canvas id="client-growth-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Activity Feed -->
+        <div class="activity-section">
+            <div class="activity-container">
+                <div class="activity-header">
+                    <h3>
+                        <i class="fas fa-stream"></i>
+                        Real-time Activity Feed
+                    </h3>
+                    <div class="activity-controls">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="clients">Clients</button>
+                        <button class="filter-btn" data-filter="system">System</button>
+                        <button class="filter-btn" data-filter="alerts">Alerts</button>
+                    </div>
+                </div>
+                <div class="activity-feed" id="activity-feed">
+                    <!-- Activity items will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Panel -->
+        <div class="quick-actions-section">
+            <div class="quick-actions-container">
+                <h3>
+                    <i class="fas fa-bolt"></i>
+                    Quick Actions
+                </h3>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="exportReport()">
+                        <i class="fas fa-download"></i>
+                        Export Monthly Report
+                    </button>
+                    <button class="action-btn" onclick="viewAlerts()">
+                        <i class="fas fa-bell"></i>
+                        View All Alerts
+                    </button>
+                    <button class="action-btn" onclick="systemMaintenance()">
+                        <i class="fas fa-tools"></i>
+                        System Maintenance
+                    </button>
+                    <button class="action-btn" onclick="clientSupport()">
+                        <i class="fas fa-headset"></i>
+                        Client Support
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/dashboard-home.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "// 🔥 DIVINE VSCODE EXTENSIONS FOR TRANSCENDENT PERFORMANCE 🔥": "",
+  "recommendations": [
+    // ⚡ ESSENTIAL PERFORMANCE EXTENSIONS
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    
+    // 🚀 REACT & NEXT.JS POWER TOOLS
+    "ms-vscode.vscode-react-native",
+    "burkeholland.simple-react-snippets",
+    "rodrigovallades.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "bradlc.vscode-tailwindcss",
+    
+    // 💎 CODE QUALITY & PRODUCTIVITY
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "ms-vscode.vscode-json",
+    
+    // 🎨 VISUAL ENHANCEMENTS
+    "zhuangtongfa.material-theme",
+    "pkief.material-icon-theme",
+    "oderwat.indent-rainbow",
+    "aaron-bond.better-comments",
+    "naumovs.color-highlight",
+    
+    // 🔧 DEVELOPMENT TOOLS
+    "ms-vscode.vscode-node-azure-pack",
+    "humao.rest-client",
+    "rangav.vscode-thunder-client",
+    "ms-vscode.vscode-github-issue-notebooks",
+    "github.vscode-pull-request-github",
+    
+    // ⚡ PERFORMANCE & OPTIMIZATION
+    "ms-vscode.vscode-webpack-analyzer",
+    "ms-vscode.vscode-js-profile-flame",
+    "ms-vscode.vscode-js-profile-table",
+    "wix.vscode-import-cost",
+    "formulahendry.auto-close-tag",
+    
+    // 🎯 UTILITY EXTENSIONS
+    "ms-vscode.live-server",
+    "ritwickdey.liveserver",
+    "ms-vscode.vscode-markdown",
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    
+    // 🌟 ADVANCED FEATURES
+    "ms-vscode.vscode-emmet-helper",
+    "formulahendry.code-runner",
+    "ms-vscode.vscode-todo-highlight",
+    "gruntfuggly.todo-tree",
+    "alefragnani.bookmarks",
+    
+    // 🔥 DIVINE POWER EXTENSIONS
+    "ms-vscode.vscode-typescript-hero",
+    "ms-vscode.vscode-css-peek",
+    "zignd.html-css-class-completion",
+    "pranaygp.vscode-css-peek",
+    "ms-vscode.vscode-html-language-features"
+  ],
+  
+  "// 🎯 UNWANTED EXTENSIONS (PERFORMANCE KILLERS)": "",
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "hookyqr.beautify",
+    "ms-vscode.vscode-chrome-debug-core",
+    "msjsdiag.debugger-for-chrome"
+  ]
+}

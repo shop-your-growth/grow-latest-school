@@ -1,0 +1,43 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#1a1a2e"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="400" height="50" fill="#16213e"/>
+  <text x="20" y="30" fill="#E0B58F" font-family="Arial, sans-serif" font-size="16" font-weight="bold">AI Analytics Dashboard</text>
+  
+  <!-- Chart 1 - Line Chart -->
+  <rect x="20" y="70" width="160" height="100" fill="#0f3460" rx="8"/>
+  <text x="30" y="90" fill="#E0B58F" font-family="Arial, sans-serif" font-size="12">Performance Metrics</text>
+  <polyline points="30,150 50,130 70,140 90,120 110,110 130,100 150,95 170,90" stroke="#E0B58F" stroke-width="2" fill="none"/>
+  <polyline points="30,160 50,145 70,155 90,135 110,125 130,115 150,110 170,105" stroke="#3c507d" stroke-width="2" fill="none"/>
+  
+  <!-- Chart 2 - Bar Chart -->
+  <rect x="200" y="70" width="160" height="100" fill="#0f3460" rx="8"/>
+  <text x="210" y="90" fill="#E0B58F" font-family="Arial, sans-serif" font-size="12">AI Model Accuracy</text>
+  <rect x="220" y="120" width="15" height="40" fill="#E0B58F"/>
+  <rect x="240" y="110" width="15" height="50" fill="#E0B58F"/>
+  <rect x="260" y="100" width="15" height="60" fill="#E0B58F"/>
+  <rect x="280" y="105" width="15" height="55" fill="#E0B58F"/>
+  <rect x="300" y="95" width="15" height="65" fill="#E0B58F"/>
+  <rect x="320" y="115" width="15" height="45" fill="#E0B58F"/>
+  
+  <!-- Stats Cards -->
+  <rect x="20" y="190" width="100" height="60" fill="#0f3460" rx="8"/>
+  <text x="30" y="210" fill="#E0B58F" font-family="Arial, sans-serif" font-size="10">Active Users</text>
+  <text x="30" y="230" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">2,847</text>
+  
+  <rect x="140" y="190" width="100" height="60" fill="#0f3460" rx="8"/>
+  <text x="150" y="210" fill="#E0B58F" font-family="Arial, sans-serif" font-size="10">AI Predictions</text>
+  <text x="150" y="230" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">94.2%</text>
+  
+  <rect x="260" y="190" width="100" height="60" fill="#0f3460" rx="8"/>
+  <text x="270" y="210" fill="#E0B58F" font-family="Arial, sans-serif" font-size="10">Learning Rate</text>
+  <text x="270" y="230" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">+12.5%</text>
+  
+  <!-- AI Brain Icon -->
+  <circle cx="380" cy="30" r="15" fill="#E0B58F" opacity="0.3"/>
+  <circle cx="380" cy="30" r="8" fill="#E0B58F"/>
+  <circle cx="376" cy="27" r="2" fill="#1a1a2e"/>
+  <circle cx="384" cy="27" r="2" fill="#1a1a2e"/>
+</svg>

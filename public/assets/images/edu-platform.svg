@@ -1,0 +1,60 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#2c3e50"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="400" height="50" fill="#34495e"/>
+  <text x="20" y="30" fill="#E0B58F" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Learning Management System</text>
+  
+  <!-- Course Cards -->
+  <rect x="20" y="70" width="110" height="80" fill="#3c507d" rx="8"/>
+  <rect x="25" y="75" width="100" height="40" fill="#E0B58F" opacity="0.2" rx="4"/>
+  <text x="30" y="95" fill="#E0B58F" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Mathematics</text>
+  <text x="30" y="110" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Progress: 75%</text>
+  <rect x="30" y="120" width="60" height="4" fill="#34495e" rx="2"/>
+  <rect x="30" y="120" width="45" height="4" fill="#E0B58F" rx="2"/>
+  <text x="30" y="140" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">12 lessons completed</text>
+  
+  <rect x="145" y="70" width="110" height="80" fill="#3c507d" rx="8"/>
+  <rect x="150" y="75" width="100" height="40" fill="#E0B58F" opacity="0.2" rx="4"/>
+  <text x="155" y="95" fill="#E0B58F" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Science</text>
+  <text x="155" y="110" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Progress: 60%</text>
+  <rect x="155" y="120" width="60" height="4" fill="#34495e" rx="2"/>
+  <rect x="155" y="120" width="36" height="4" fill="#E0B58F" rx="2"/>
+  <text x="155" y="140" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">9 lessons completed</text>
+  
+  <rect x="270" y="70" width="110" height="80" fill="#3c507d" rx="8"/>
+  <rect x="275" y="75" width="100" height="40" fill="#E0B58F" opacity="0.2" rx="4"/>
+  <text x="280" y="95" fill="#E0B58F" font-family="Arial, sans-serif" font-size="12" font-weight="bold">History</text>
+  <text x="280" y="110" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Progress: 90%</text>
+  <rect x="280" y="120" width="60" height="4" fill="#34495e" rx="2"/>
+  <rect x="280" y="120" width="54" height="4" fill="#E0B58F" rx="2"/>
+  <text x="280" y="140" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">18 lessons completed</text>
+  
+  <!-- Student Activity -->
+  <rect x="20" y="170" width="180" height="100" fill="#3c507d" rx="8"/>
+  <text x="30" y="190" fill="#E0B58F" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Recent Activity</text>
+  <circle cx="40" cy="210" r="8" fill="#E0B58F"/>
+  <text x="55" y="215" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">John completed Math Quiz</text>
+  <circle cx="40" cy="230" r="8" fill="#E0B58F"/>
+  <text x="55" y="235" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Sarah started Science Lab</text>
+  <circle cx="40" cy="250" r="8" fill="#E0B58F"/>
+  <text x="55" y="255" fill="#ffffff" font-family="Arial, sans-serif" font-size="10">Mike submitted History Essay</text>
+  
+  <!-- Calendar -->
+  <rect x="220" y="170" width="160" height="100" fill="#3c507d" rx="8"/>
+  <text x="230" y="190" fill="#E0B58F" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Upcoming Classes</text>
+  <rect x="230" y="200" width="140" height="15" fill="#34495e" rx="2"/>
+  <text x="235" y="210" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">Math - Today 2:00 PM</text>
+  <rect x="230" y="220" width="140" height="15" fill="#34495e" rx="2"/>
+  <text x="235" y="230" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">Science - Tomorrow 10:00 AM</text>
+  <rect x="230" y="240" width="140" height="15" fill="#34495e" rx="2"/>
+  <text x="235" y="250" fill="#ffffff" font-family="Arial, sans-serif" font-size="9">History - Friday 1:00 PM</text>
+  
+  <!-- Book Icon -->
+  <rect x="360" y="20" width="20" height="15" fill="#E0B58F" rx="2"/>
+  <rect x="362" y="22" width="16" height="11" fill="#2c3e50"/>
+  <line x1="365" y1="25" x2="375" y2="25" stroke="#E0B58F" stroke-width="1"/>
+  <line x1="365" y1="28" x2="375" y2="28" stroke="#E0B58F" stroke-width="1"/>
+  <line x1="365" y1="31" x2="375" y2="31" stroke="#E0B58F" stroke-width="1"/>
+</svg>

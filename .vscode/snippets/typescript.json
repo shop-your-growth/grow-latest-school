@@ -1,0 +1,235 @@
+{
+  "// 🔥 DIVINE TYPESCRIPT SNIPPETS FOR TRANSCENDENT CODING SPEED 🔥": "",
+  
+  "React Functional Component with TypeScript": {
+    "prefix": "rfc",
+    "body": [
+      "'use client';",
+      "",
+      "import { ${2:useState} } from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  ${3:// Add props here}",
+      "}",
+      "",
+      "export default function ${1:ComponentName}({ ${4:} }: ${1:ComponentName}Props) {",
+      "  ${5:// Component logic here}",
+      "",
+      "  return (",
+      "    <div className=\"${6:}\">${7:}",
+      "      ${0}",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "🚀 Create optimized React functional component with TypeScript"
+  },
+
+  "React Component with Framer Motion": {
+    "prefix": "rfcm",
+    "body": [
+      "'use client';",
+      "",
+      "import { motion } from 'framer-motion';",
+      "import { ${2:useState} } from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  ${3:// Add props here}",
+      "}",
+      "",
+      "export default function ${1:ComponentName}({ ${4:} }: ${1:ComponentName}Props) {",
+      "  return (",
+      "    <motion.div",
+      "      initial={{ opacity: 0, y: 20 }}",
+      "      animate={{ opacity: 1, y: 0 }}",
+      "      transition={{ duration: 0.6 }}",
+      "      className=\"${5:}\"",
+      "    >",
+      "      ${0}",
+      "    </motion.div>",
+      "  );",
+      "}"
+    ],
+    "description": "⚡ Create React component with Framer Motion animations"
+  },
+
+  "Optimized useState Hook": {
+    "prefix": "us",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<${2:type}>(${3:initialValue});"
+    ],
+    "description": "🎯 Create optimized useState hook with TypeScript"
+  },
+
+  "Optimized useCallback Hook": {
+    "prefix": "ucb",
+    "body": [
+      "const ${1:functionName} = useCallback(${2:(${3:params}) => {",
+      "  ${4:// Function logic}",
+      "}}, [${5:dependencies}]);"
+    ],
+    "description": "💎 Create optimized useCallback hook"
+  },
+
+  "Optimized useMemo Hook": {
+    "prefix": "um",
+    "body": [
+      "const ${1:memoizedValue} = useMemo(() => ${2:computeExpensiveValue(${3:})}, [${4:dependencies}]);"
+    ],
+    "description": "🔧 Create optimized useMemo hook"
+  },
+
+  "useEffect Hook": {
+    "prefix": "ue",
+    "body": [
+      "useEffect(() => {",
+      "  ${1:// Effect logic}",
+      "  ",
+      "  return () => {",
+      "    ${2:// Cleanup logic}",
+      "  };",
+      "}, [${3:dependencies}]);"
+    ],
+    "description": "🌟 Create useEffect hook with cleanup"
+  },
+
+  "Custom Hook": {
+    "prefix": "ch",
+    "body": [
+      "import { useState, useEffect, useCallback } from 'react';",
+      "",
+      "interface Use${1:HookName}Return {",
+      "  ${2:// Return type properties}",
+      "}",
+      "",
+      "export function use${1:HookName}(${3:params}): Use${1:HookName}Return {",
+      "  const [${4:state}, set${4/(.*)/${1:/capitalize}/}] = useState(${5:initialValue});",
+      "",
+      "  ${6:// Hook logic}",
+      "",
+      "  return {",
+      "    ${7:// Return object}",
+      "  };",
+      "}"
+    ],
+    "description": "🔥 Create custom hook with TypeScript"
+  },
+
+  "API Route Handler": {
+    "prefix": "api",
+    "body": [
+      "import { NextRequest, NextResponse } from 'next/server';",
+      "",
+      "export async function ${1:GET}(request: NextRequest) {",
+      "  try {",
+      "    ${2:// API logic here}",
+      "",
+      "    return NextResponse.json({ ${3:success: true} });",
+      "  } catch (error) {",
+      "    console.error('API Error:', error);",
+      "    return NextResponse.json(",
+      "      { error: 'Internal Server Error' },",
+      "      { status: 500 }",
+      "    );",
+      "  }",
+      "}"
+    ],
+    "description": "🚀 Create Next.js API route handler"
+  },
+
+  "Tailwind CSS Classes": {
+    "prefix": "tw",
+    "body": [
+      "className=\"${1:flex items-center justify-center p-4 bg-white rounded-lg shadow-lg}\""
+    ],
+    "description": "🎨 Quick Tailwind CSS classes"
+  },
+
+  "Performance Optimized Component": {
+    "prefix": "perf",
+    "body": [
+      "'use client';",
+      "",
+      "import { memo, useMemo, useCallback } from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  ${2:// Props here}",
+      "}",
+      "",
+      "const ${1:ComponentName} = memo(function ${1:ComponentName}({ ${3:} }: ${1:ComponentName}Props) {",
+      "  const ${4:memoizedValue} = useMemo(() => {",
+      "    ${5:// Expensive computation}",
+      "  }, [${6:dependencies}]);",
+      "",
+      "  const ${7:handleClick} = useCallback(() => {",
+      "    ${8:// Event handler}",
+      "  }, [${9:dependencies}]);",
+      "",
+      "  return (",
+      "    <div className=\"${10:}\">${11:}",
+      "      ${0}",
+      "    </div>",
+      "  );",
+      "});",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "⚡ Create performance-optimized React component"
+  },
+
+  "TypeScript Interface": {
+    "prefix": "int",
+    "body": [
+      "interface ${1:InterfaceName} {",
+      "  ${2:property}: ${3:type};",
+      "  ${0}",
+      "}"
+    ],
+    "description": "💎 Create TypeScript interface"
+  },
+
+  "TypeScript Type": {
+    "prefix": "typ",
+    "body": [
+      "type ${1:TypeName} = ${2:string | number | boolean};"
+    ],
+    "description": "🔧 Create TypeScript type alias"
+  },
+
+  "Async Function": {
+    "prefix": "af",
+    "body": [
+      "const ${1:functionName} = async (${2:params}): Promise<${3:ReturnType}> => {",
+      "  try {",
+      "    ${4:// Async logic}",
+      "    return ${5:result};",
+      "  } catch (error) {",
+      "    console.error('Error in ${1:functionName}:', error);",
+      "    throw error;",
+      "  }",
+      "};"
+    ],
+    "description": "🌟 Create async function with error handling"
+  },
+
+  "Console Log with Emoji": {
+    "prefix": "cl",
+    "body": [
+      "console.log('${1:🔥} ${2:Message}:', ${3:variable});"
+    ],
+    "description": "🔍 Console log with emoji for better debugging"
+  },
+
+  "Try Catch Block": {
+    "prefix": "tc",
+    "body": [
+      "try {",
+      "  ${1:// Code that might throw}",
+      "} catch (error) {",
+      "  console.error('${2:Error message}:', error);",
+      "  ${3:// Error handling}",
+      "}"
+    ],
+    "description": "🛡️ Try-catch block with error logging"
+  }
+}
